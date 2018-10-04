@@ -7,12 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>nhood-location-svc</name>
-
 	<parent>
 		<groupId>com.h8.nh</groupId>
 		<artifactId>nhood-parent-service-bom</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
