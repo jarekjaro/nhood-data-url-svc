@@ -18,4 +18,15 @@
 		<module>nhood-location-svc-dto</module>
 	</modules>
 
+	<repositories>
+		<repository>
+			<id>nhood-mvn-repo</id>
+			<url>https://raw.github.com/nhood-org/nhood-repository/mvn-repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
 </project>
