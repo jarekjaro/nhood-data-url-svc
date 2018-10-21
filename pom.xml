@@ -3,7 +3,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>nhood-location-svc</artifactId>
+	<artifactId>nhood-data-url-svc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -14,8 +14,8 @@
 	</parent>
 
 	<modules>
-		<module>nhood-location-svc-app</module>
-		<module>nhood-location-svc-dto</module>
+		<module>nhood-data-url-svc-app</module>
+		<module>nhood-data-url-svc-dto</module>
 	</modules>
 
 	<repositories>
