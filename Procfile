@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -Dspring.profiles.active=local $JAVA_OPTS -jar nhood-data-url-svc-app/target/nhood-data-url-svc-app-0.0.1-SNAPSHOT.jar
