@@ -32,8 +32,3 @@ jobs:
           name: Deploy to GitHub repository
           command: |
             mvn -s .circleci.settings.xml deploy
-
-#    - run:
-#          name: Deploy to Heroku
-#          command: |
-#            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/nhood-data-url-svc.git master
