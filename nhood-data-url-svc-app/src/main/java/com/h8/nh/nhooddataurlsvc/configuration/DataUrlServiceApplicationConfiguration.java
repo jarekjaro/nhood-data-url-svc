@@ -22,7 +22,7 @@ public class DataUrlServiceApplicationConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.h8.nh"))
                 .paths(PathSelectors.any())
                 .build();
     }

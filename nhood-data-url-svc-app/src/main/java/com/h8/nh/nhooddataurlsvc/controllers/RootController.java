@@ -16,7 +16,7 @@ public class RootController {
     @Value("${spring.application.version}")
     private String applicationVersion;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<String> root() {
         var message = String.format("%s:%s", applicationName, applicationVersion);
