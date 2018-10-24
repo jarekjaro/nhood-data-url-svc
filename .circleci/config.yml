@@ -18,7 +18,7 @@ jobs:
     <<: *defaults
     steps:
     - checkout
-    - run: mvn -s .circleci.settings.xml deploy
+    - run: mvn -s .circleci.settings.xml deploy -Dmaven.test.skip=true
     
 workflows:
   version: 2
@@ -26,6 +26,8 @@ workflows:
     jobs:
       - build
       - deploy:
+          requires:
+            - build
           filters:
             branches:
               only: master
