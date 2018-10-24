@@ -19,3 +19,13 @@ jobs:
     steps:
     - checkout
     - run: mvn -s .circleci.settings.xml deploy
+    
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only: master
