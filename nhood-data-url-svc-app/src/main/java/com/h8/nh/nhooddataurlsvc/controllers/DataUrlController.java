@@ -5,7 +5,6 @@ import com.h8.nh.nhooddataurlsvc.dto.request.DataUrlRequestDTO;
 import com.h8.nh.nhooddataurlsvc.dto.response.DataUrlResponseDTO;
 import com.h8.nh.nhooddataurlsvc.services.DataUrlService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,22 +19,21 @@ public class DataUrlController {
 
     private final ModelMapper mapper;
 
-    private final DataUrlService service;
+    private final DataUrlService dataUrlService;
 
-    @Autowired
     public DataUrlController(
             ModelMapper mapper,
-            DataUrlService service) {
+            DataUrlService dataUrlService) {
         this.mapper = mapper;
-        this.service = service;
+        this.dataUrlService = dataUrlService;
     }
 
     @GetMapping
     @ResponseBody
     public ResponseEntity<Iterable<DataUrlResponseDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll()
+        return ResponseEntity.ok(dataUrlService.findAll()
                 .stream()
-                .map(l -> mapper.map(l, DataUrlResponseDTO.class))
+                .map(dataUrl -> mapper.map(dataUrl, DataUrlResponseDTO.class))
                 .collect(Collectors.toList()));
     }
 
@@ -43,8 +41,8 @@ public class DataUrlController {
     @ResponseBody
     public ResponseEntity<DataUrlResponseDTO> findById(
             @PathVariable Long id) {
-        return service.findById(id)
-                .map(l -> mapper.map(l, DataUrlResponseDTO.class))
+        return dataUrlService.findById(id)
+                .map(dataUrl -> mapper.map(dataUrl, DataUrlResponseDTO.class))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -55,7 +53,7 @@ public class DataUrlController {
             @Valid @RequestBody DataUrlRequestDTO dto)
             throws URISyntaxException {
         var entry = mapper.map(dto, DataUrl.class);
-        var result = service.create(entry);
+        var result = dataUrlService.create(entry);
         return ResponseEntity.created(
                 new URI("/urls/" + result.getId())).build();
     }
@@ -65,8 +63,8 @@ public class DataUrlController {
     public ResponseEntity modify(
             @PathVariable Long id, @Valid @RequestBody DataUrlRequestDTO dto) {
         var entry = mapper.map(dto, DataUrl.class);
-        return service.modify(id, entry)
-                .map(l -> ResponseEntity.noContent().build())
+        return dataUrlService.modify(id, entry)
+                .map(dataUrl -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -74,8 +72,8 @@ public class DataUrlController {
     @ResponseBody
     public ResponseEntity delete(
             @PathVariable Long id) {
-        return service.delete(id)
-                .map(l -> ResponseEntity.noContent().build())
+        return dataUrlService.delete(id)
+                .map(dataUrl -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
 }
